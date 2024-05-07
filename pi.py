@@ -22,14 +22,22 @@ def compute_pi(n):
 
 
 def main():
-
-    num_digits = int(input('Enter number of digits: '))
-
-    if num_digits > 100:
-        print('Maximum number of digits limit is exceeded! Setting digits to 100 decimal places.')
-        num_digits = 100
+    while True:
+        user_input = input('Enter number of digits: ')
+        try:
+            num_digits = int(user_input)
+            if num_digits < 1:
+                print("Please enter a number that is greater than 0.")
+                continue
+            if num_digits > 100:
+                print('Maximum number of digits limit is exceeded! Setting digits to 100 decimal places.')
+                num_digits = 100
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
 
     pi_calc = compute_pi(num_digits)
+
     print(f"Pi to {num_digits} decimal places is {pi_calc}")
 
 
